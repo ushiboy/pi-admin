@@ -1,0 +1,15 @@
+[ignore]
+.*/node_modules/.*
+
+[include]
+
+[libs]
+./node_modules/@ushiboy/cyclone/cyclone.js.flow
+
+[lints]
+
+[options]
+module.name_mapper.extension='scss' -> 'SCSSModule'
+module.system=haste
+
+[strict]
