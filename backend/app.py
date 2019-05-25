@@ -35,12 +35,13 @@ def make_app(sys_ctrl):
 if __name__ == '__main__':
     try:
         dry_run = os.getenv('DRY_RUN', False)
+        port = int(os.getenv('PORT', "8080"))
         if dry_run:
             sys_ctrl = SystemControlMock()
         else:
             sys_ctrl = SystemControl()
         app = make_app(sys_ctrl)
-        app.listen(8080, "127.0.0.1")
+        app.listen(port, "127.0.0.1")
         tornado.ioloop.IOLoop.instance().start()
     except KeyboardInterrupt:
         pass
