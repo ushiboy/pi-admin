@@ -25,7 +25,7 @@ function PowerOffButton(props: { onClick: () => void }) {
 
 function Main() {
   return (
-    <div style={{ display: 'table', width: '320px', height: '240px' }}>
+    <div style={{ display: 'table', width: '480px', height: '320px' }}>
       <div
         style={{
           display: 'table-cell',
