@@ -18,9 +18,10 @@ def build(c):
     c.run('mv tmp/backend/* build')
 
 @task
-def deploy(c):
-    patchwork.transfers.rsync(c, './build/*', '/home/pi/app')
-    with c.cd('/home/pi/app'):
-        c.run('python3 -m venv venv')
-        c.run('venv/bin/pip install --upgrade pip')
-        c.run('venv/bin/pip install -r requirements.txt')
+def setup(c):
+    c.sudo('mkdir -p /extra/app')
+    c.sudo('sh -c "chown \$SUDO_USER.\$SUDO_USER /extra/app"')
+    c.sudo('sh -c "ln -s /extra/app /home/\$SUDO_USER/app"')
+    patchwork.transfers.rsync(c, './build/*', '/extra/app')
+    c.put('./bin/setup.sh', '/tmp/setup.sh')
+    c.sudo('/tmp/setup.sh')
