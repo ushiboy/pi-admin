@@ -17,7 +17,7 @@ $ fab build
 ## Deploy
 
 ```
-$ fab -H pi@<ip address> deploy
+$ fab -H pi@<ip address> setup
 ```
 
 ## License
